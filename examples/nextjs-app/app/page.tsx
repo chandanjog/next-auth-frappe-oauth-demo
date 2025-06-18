@@ -5,7 +5,9 @@ import { Button } from '@/components/ui/button'
 
 export default function Home() {
   const session = useSession()
+  console.log("session", session);
   const user = session.data?.user
+  console.log("user", user);
   const isAuthenticated = !!user
 
   return (
