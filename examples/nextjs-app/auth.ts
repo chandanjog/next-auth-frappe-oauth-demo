@@ -34,7 +34,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   }],
   session: { strategy: 'jwt' },
   callbacks: {
-    session: async ({ session }) => {
+    jwt: async ({ token, user, account }) => {
+        console.log("JWT callback called with token:", token, "user:", user, "account:", account);
+        // // If this is the first time the user is signing in, add user info to the token
+        // if (user) {
+        //     token.id = user.id;
+        //     token.email = user.email;
+        //     token.name = user.name;
+        // }
+        return token;
+    },
+    session: async ({ session, token }) => {
+        console.log("Session callback called with session:", session, "and token:", token);
       return session
     },
     signIn: async ({ user, account }) => {

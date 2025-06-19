@@ -1,11 +1,17 @@
 'use client'
 
 import { useSession, signOut, signIn } from 'next-auth/react'
+// import { getToken } from "next-auth/jwt";
 import { Button } from '@/components/ui/button'
 
 export default function Home() {
   const session = useSession()
   console.log("session", session);
+  // async function fetchToken() {
+  //   const token = await getToken()
+  //   console.log("Token:", token)
+  // }
+  // console.log("fetchToken", fetchToken());
   const user = session.data?.user
   console.log("user", user);
   const isAuthenticated = !!user
